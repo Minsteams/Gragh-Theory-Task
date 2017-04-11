@@ -20,7 +20,8 @@ struct cmp
 };  
 void Dijkstra()  
 {  
-    priority_queue<int,vector<int>,cmp> Q;  
+	yeah
+
     memset(dis,-1,sizeof(dis));  
     memset(vis,0,sizeof(vis));  
     int i,u,v;  
