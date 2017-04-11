@@ -26,7 +26,6 @@ void Dijkstra()
     int i,u,v;  
     Q.push(st);  
     dis[st]=0;  
-	//111
     while(!Q.empty())  
     {  
         u=Q.top();  
