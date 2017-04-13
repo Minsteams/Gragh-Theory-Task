@@ -18,5 +18,28 @@
     <ClCompile Include="dijkstra.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="my_graph.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitiveClosure.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="my_graph.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="my_heap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dijkstra.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="my_matrix.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
