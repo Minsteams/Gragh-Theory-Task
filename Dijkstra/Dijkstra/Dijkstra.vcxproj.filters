@@ -27,6 +27,9 @@
     <ClCompile Include="TransitiveClosure.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ShortestPathTree.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="my_graph.h">
@@ -39,7 +42,10 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="my_matrix.h">
-      <Filter>源文件</Filter>
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ShortestPathTree.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

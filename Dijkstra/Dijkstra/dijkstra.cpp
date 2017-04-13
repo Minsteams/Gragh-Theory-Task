@@ -64,10 +64,12 @@ void dijkstra(Graph<DijVertex> &graph, int index) {
 	//func
 	distances[index] = 0;
 	heap.push(graph[index]);
+	paths[index] = index;
 	DijVertex top;
 	while (!heap.isEmpty()) {
 		heap.popTo(top);
 		Edge *temp = top.edge;
+		
 		while (temp != NULL) {
 			if (distances[temp->toV] == -1 || distances[temp->toV] > distances[top.index] + temp->weight) {
 				distances[temp->toV] = distances[top.index] + temp->weight;
