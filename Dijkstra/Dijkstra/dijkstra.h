@@ -7,13 +7,15 @@ extern int* distances;//distances
 extern int* paths;	//to record paths from original vertex.
 class DijVertex :public Vertex {
 public:
+	void operator=(const Vertex & rhs);
 	bool operator<(const Vertex & rhs)const;
 	bool operator<(const int rhs)const;
 };
 class DijHeap :public Heap<DijVertex> {
 public:
+	void push(const DijVertex &i);
 	virtual void Swap(DijVertex &a, DijVertex &b);
-	void popTo(DijVertex & item);
+	void popTo(DijVertex ** item);
 };
 void ClearData();
 

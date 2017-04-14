@@ -115,12 +115,14 @@
   <ItemGroup>
     <ClCompile Include="dijkstra.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="myFilePrint.cpp" />
     <ClCompile Include="my_graph.cpp" />
     <ClCompile Include="ShortestPathTree.cpp" />
     <ClCompile Include="TransitiveClosure.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dijkstra.h" />
+    <ClInclude Include="myFilePrint.h" />
     <ClInclude Include="my_graph.h" />
     <ClInclude Include="my_heap.h" />
     <ClInclude Include="my_matrix.h" />

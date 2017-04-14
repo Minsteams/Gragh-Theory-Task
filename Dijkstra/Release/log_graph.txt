@@ -1,0 +1,11 @@
+Vertexes Count:20
+Max edges of each vertex Count:19
+Max weight of each edge:500
+Test data created!
+Use time:0.004502
+Press any key to continue...
+Graph created!Use time:0.000500
+Press any key to continue...
+Tree created!Use time:0.000998
+Press any key to continue...
+Matrix created!Use time:0.000000

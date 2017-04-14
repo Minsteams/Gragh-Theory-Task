@@ -12,12 +12,12 @@ protected:
 public:
 	myTree(myNode*r);
 	~myTree();
-	void ListAll();
+	void ListAll(FILE*out = NULL);
 private:
-	void List(myNode&node, int order);
+	void List(myNode&node, int order,FILE*out=NULL);
 	void ClearBranch(myNode * branch);
 };
 
-bool** PathsToMatrix(int *path, int n);
-myNode* MatrixToTreeRoot(bool**matrix, int &n, int root);
-void BuildBranch(myNode &node, bool**matrix, int &n);
+char** PathsToMatrix(int *path, int n);
+myNode* MatrixToTreeRoot(char**matrix, int &n, int root);
+void BuildBranch(myNode &node, char**matrix, int &n);

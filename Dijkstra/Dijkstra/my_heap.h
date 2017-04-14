@@ -8,7 +8,7 @@ protected:
 	int currentSize;
 public:
 	Heap();
-	bool isEmpty()const;
+	char isEmpty()const;
 	void push(const Comparable &i);
 	void popTo(Comparable & item);
 	void PercolateUp(int hole);
@@ -24,7 +24,7 @@ Heap<Comparable>::Heap() :currentSize(0) {
 	heap.resize(1);
 }
 template<typename Comparable>
-bool Heap<Comparable>::isEmpty()const {
+char Heap<Comparable>::isEmpty()const {
 	return currentSize == 0;
 }
 template<typename Comparable>
@@ -57,7 +57,6 @@ void Heap<Comparable>::PercolateDown(int hole) {
 	int child = hole * 2;
 	int tmp = heap[hole].index;
 	for (; child <= currentSize; hole = child) {
-		printf_s("!");
 		child = hole * 2;
 		if (child != currentSize&&heap[child + 1] < heap[child])
 			child++;

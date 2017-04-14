@@ -1,20 +1,21 @@
 #include<iostream>
 #include"ShortestPathTree.h"
+#include"myFilePrint.h"
 
 myTree::myTree(myNode*r) :root(r) {}
 myTree::~myTree() {
 	ClearBranch(root);
 }
-void myTree::ListAll() {
-	List(*root, 0);
+void myTree::ListAll (FILE*out) {
+	List(*root, 0 ,out);
 }
-void myTree::List(myNode&node, int order) {
-	printf_s("\n");
+void myTree::List(myNode&node, int order, FILE*out) {
+	mfprint(out,"\n");
 	for (int i = 0; i < order; i++)
-		printf_s("\t");
-	printf_s("--%d", node.element);
-	if (node.firstSon != NULL)List(*node.firstSon, order+1);
-	if (node.next != NULL)List(*node.next, order);
+		mfprint(out,"\t");
+	mfprint(out,"--%d", node.element);
+	if (node.firstSon != NULL)List(*node.firstSon, order + 1, out);
+	if (node.next != NULL)List(*node.next, order, out);
 }
 void myTree::ClearBranch(myNode * branch) {
 	if (branch != NULL) {
@@ -23,10 +24,10 @@ void myTree::ClearBranch(myNode * branch) {
 		delete branch;
 	}
 }
-bool** PathsToMatrix(int *path, int n) {
-	bool** m = new bool*[n];
+char** PathsToMatrix(int *path, int n) {
+	char** m = new char*[n];
 	for (int i = 0; i <n; i++)
-		m[i] = new bool[n];
+		m[i] = new char[n];
 	for (int i = 0; i < n; i++)
 		for (int j = 0; j < n; j++)
 			m[i][j] = false;
@@ -36,16 +37,16 @@ bool** PathsToMatrix(int *path, int n) {
 	}
 	return m;
 }
-myNode* MatrixToTreeRoot(bool**matrix, int &n, int root) {
+myNode* MatrixToTreeRoot(char**matrix, int &n, int root) {
 	myNode* r = new myNode(root);
 	BuildBranch(*r, matrix, n);
 	return r;
 }
-void BuildBranch(myNode &node, bool**matrix, int &n) {
+void BuildBranch(myNode &node, char**matrix, int &n) {
 	int e = node.element;
 	myNode * current = NULL;
 	for (int i = 0; i < n; i++) {
-		if (matrix[e][i]&&e!=i) {
+		if (matrix[e][i]!=0&&e!=i) {
 			if (node.firstSon == NULL) {
 				node.firstSon = new myNode(i);
 				current = node.firstSon;

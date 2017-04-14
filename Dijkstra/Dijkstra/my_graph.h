@@ -1,12 +1,14 @@
 #pragma once
 #include<vector>
+#include"myFilePrint.h"
+//类模板实现于头文件
 using namespace std;
 struct Edge {
 	int toV;
 	int weight;
 	Edge *next;
 	Edge(int to, Edge* n = NULL) :toV(to), weight(1), next(n) {};
-	Edge(int to, int w, Edge* n = NULL) :toV(to), weight(1), next(n) {};
+	Edge(int to, int w, Edge* n = NULL) :toV(to), weight(w), next(n) {};
 };
 class Vertex {
 public:
@@ -21,7 +23,7 @@ template<typename v>
 class Graph {
 public:
 	Graph(int i);
-	void Print();
+	void Print(FILE*out=NULL);
 	size_t size()const;
 	void Link(int from, int to, int w = 1);
 	const v & operator[](int i) const;
@@ -34,6 +36,7 @@ private:
 //模板类实现放入同一文件
 template<typename v>
 Graph<v>::Graph(int i) {
+	if (i == -1)i = 0;
 	vertexes.resize(i);
 	for (int j = 0; j < i; j++) {
 		vertexes[j].index = j;
@@ -41,16 +44,17 @@ Graph<v>::Graph(int i) {
 	}
 }
 template<typename v>
-void Graph<v>::Print() {
-	for (int i = 0; i < vertexes.size(); i++) {
-		printf_s("%d\t", vertexes[i].index);
+void Graph<v>::Print(FILE*out) {
+	if (size() == 0)mfprint(out,"Empty!\n");
+	else for (int i = 0; i < vertexes.size(); i++) {
+		mfprint(out, "%d\t", vertexes[i].index);
 		Edge *tempEdge = vertexes[i].edge;
 		while (tempEdge != NULL)
 		{
-			printf_s("to %d(%d) ,", tempEdge->toV, tempEdge->weight);
+			mfprint(out, "to %d(%d) ,", tempEdge->toV, tempEdge->weight);
 			tempEdge = tempEdge->next;
 		}
-		printf_s("\n");
+		mfprint(out, "\n");
 	}
 }
 template<typename v>

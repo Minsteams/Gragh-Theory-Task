@@ -1,14 +1,15 @@
 #include<iostream>
 #include"dijkstra.h"
 #include"my_matrix.h"
+#include"myFilePrint.h"
 using namespace std;
 
 
-bool** GraphToMatrix(Graph<DijVertex> g) {
+char** GraphToMatrix(Graph<DijVertex> &g) {
 	int n = g.size();
-	bool** m = new bool*[n];
+	char** m = new char *[n];
 	for (int i = 0; i <n; i++)
-		m[i] = new bool[n];
+		m[i] = new char[n];
 	for (int i = 0; i < n; i++)
 		for (int j = 0; j < n; j++)
 			m[i][j] = false;
@@ -21,23 +22,24 @@ bool** GraphToMatrix(Graph<DijVertex> g) {
 	}
 	return m;
 }
-void ClearMatrix(bool** m, int n) {
-	for (int i=0; i < n; i++) {
-		delete[]m[i];
-	}
-	delete m;
-}
-void PrintMatrix(bool** m, int n) {
+void ClearMatrix(char*** m, int n) {
 	for (int i = 0; i < n; i++) {
-		printf_s("\n");
+		delete []((*m)[i]);
+	}
+	delete [] (*m);
+	*m=NULL;
+}
+void PrintMatrix(char** m, int n,FILE*out) {
+	for (int i = 0; i < n; i++) {
+		mfprint(out,"\n");
 		for (int j = 0; j < n; j++) {
-			printf_s("%-5d", m[i][j]);
+			mfprint(out,"%-5d", m[i][j]);
 		}
 
 	}
-	printf_s("\n");
+	mfprint(out,"\n");
 }
-void MatrixToTransitiveClosure(bool **a, int n) {
+void MatrixToTransitiveClosure(char **a, int n) {
 	int i, j, k;
 	for (k = 0; k < n; k++)
 	{

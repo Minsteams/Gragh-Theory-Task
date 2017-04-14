@@ -1,13 +1,20 @@
 #include<iostream>
 #include"my_graph.h"
 
-void Vertex::LinkTo(int i, int w = 1) {
+void Vertex::LinkTo(int i, int w) {
 	Edge **tempEdge = &edge;
+	bool existed = false;
 	while (*tempEdge != NULL)
 	{
+		if (i == (*tempEdge)->toV) {
+			(*tempEdge)->weight = w;
+			existed = true;
+			break;
+		}
 		tempEdge = &((*tempEdge)->next);
 	}
-	*tempEdge = new Edge(i, w);
+	if(!existed)
+		*tempEdge = new Edge(i, w);
 }
 void Vertex::operator=(const Vertex & rhs) {
 	index = rhs.index;
